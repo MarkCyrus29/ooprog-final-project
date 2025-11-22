@@ -11,31 +11,57 @@ public class Room {
     private String id;
     private String name;
     private double rent;
-    private boolean isOccupied;
-    private List<String> tenantNames; 
+    private Boolean occupied;
+    private List<String> tenantNames;
 
-    public Room() {}
+    public Room() {
+    }
 
-    public Room(String name, double rent, boolean isOccupied, List<String> tenantNames) {
+    public Room(String name, double rent, Boolean occupied, List<String> tenantNames) {
         this.name = name;
         this.rent = rent;
-        this.isOccupied = isOccupied;
+        this.occupied = occupied;
         this.tenantNames = tenantNames;
     }
 
     // getters & setters
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
+    public String getId() {
+        return id;
+    }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public double getRent() { return rent; }
-    public void setRent(double rent) { this.rent = rent; }
+    public String getName() {
+        return name;
+    }
 
-    public boolean isOccupied() { return isOccupied; }
-    public void setIsOccupied(boolean isOccupied) { this.isOccupied = isOccupied; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public List<String> getTenantNames() { return tenantNames; }
-    public void setTenantNames(List<String> tenantNames) { this.tenantNames = tenantNames; }
+    public double getRent() {
+        return rent;
+    }
+
+    public void setRent(double rent) {
+        this.rent = rent;
+    }
+
+    public Boolean isOccupied() {
+        return occupied;
+    }
+
+    public void setOccupied(Boolean occupied) {
+        this.occupied = occupied;
+    }
+
+    public List<String> getTenantNames() {
+        return tenantNames;
+    }
+
+    public void setTenantNames(List<String> tenantNames) {
+        this.tenantNames = tenantNames;
+    }
 }

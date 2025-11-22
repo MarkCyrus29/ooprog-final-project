@@ -22,7 +22,7 @@ public class RoomController {
 
     // GET /api/rooms -> list all rooms
     @GetMapping
-    public List<Room> list() {
+    public List<Room> list() { 
         return repo.findAll();
     }
 
@@ -53,8 +53,39 @@ public class RoomController {
         room.setName(updated.getName());
         room.setRent(updated.getRent());
         // names match model: isOccupied, tenantNames
-        room.setIsOccupied(updated.isOccupied());
+        room.setOccupied(updated.isOccupied());
         room.setTenantNames(updated.getTenantNames());
+
+        Room saved = repo.save(room);
+        return ResponseEntity.ok(saved);
+    }
+
+    // PATCH /api/rooms/{id} -> partial update
+    @PatchMapping("/{id}")
+    public ResponseEntity<Room> patch(
+            @PathVariable String id,
+            @RequestBody Room updated) {
+        Optional<Room> existingOpt = repo.findById(id);
+
+        if (existingOpt.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Room room = existingOpt.get();
+
+        // Only update fields that were provided
+        if (updated.getName() != null) {
+            room.setName(updated.getName());
+        }
+        if (updated.getRent() != 0) { // 0 means unchanged
+            room.setRent(updated.getRent());
+        }
+        // Boolean check
+        room.setOccupied(updated.isOccupied());
+
+        if (updated.getTenantNames() != null) {
+            room.setTenantNames(updated.getTenantNames());
+        }
 
         Room saved = repo.save(room);
         return ResponseEntity.ok(saved);
