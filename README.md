@@ -3,9 +3,60 @@
 **Alejandro Umila**  
 **Section:** C2B  
 
-> 🔗 **Live Demo:** *(Vercel link here)*
-
 > 📈 **Flowchart:** *(link here)*
+# Project Structure
+
+```
+/root
+ ├── frontend       → Next.js UI
+ └── backend        → Spring Boot API + MongoDB
+```
+
+## Backend Setup (Spring Boot + MongoDB)
+
+1. Navigate to backend folder:
+
+```bash
+cd backend
+```
+
+2. Clean the build (optional but recommended when resetting):
+
+```bash
+.\mvnw.cmd clean package
+```
+
+3. Run the backend server:
+
+```bash
+.\mvnw.cmd spring-boot:run
+```
+
+4. Verify the server is running:
+
+```bash
+curl http://localhost:8080/api/health
+```
+
+If everything is working, you should receive a success JSON response.
+
+## Frontend Setup (Next.js)
+
+1. Navigate to frontend folder:
+
+```bash
+cd frontend
+```
+
+2. Start development server:
+
+```bash
+npm run dev
+```
+
+3. View in browser:
+
+Open [http://localhost:3000](http://localhost:3000)
 
 
 # 🏠 RoomEase — Smart Property & Tenant Management System
